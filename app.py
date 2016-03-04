@@ -6,11 +6,11 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-@app.route('/cakes')
+@app.route('/about/')
 def cakes():
-    return 'Yummy cakes!'
+    return 'A Project by ISTE- NITK Chapter.'
 
-@app.route('/hello/<name>')
+@app.route('/hello/<name>/')
 def hello(name):
 	return render_template('page.html', name=name)
 
