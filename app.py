@@ -17,9 +17,9 @@ def login():
     else:
     	return 'You are probably using GET'
 
-@app.route('/hello/<name>/')							#name is the variable we pass to this route 
+@app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):
-	return render_template('page.html', name=name) 		#pass name variable to page.html Why is it left to right association? 
+	return render_template('page.html', name=name) 		#the first name is a keyword, second is the variable in page.html	THIS IMPLEMENTS GET
 
 if __name__ == '__main__':
 	app.run(debug=True, host= '0.0.0.0', port=int("8000"))
