@@ -2,9 +2,21 @@ from Tkinter import *
 
 root= Tk() #blank window
 
-#thelabel= Label(root, text='This is very easy.')
-#thelabel.pack() 
+label_1 = Label(root, text='Username')
+label_2 = Label(root, text='Password')
+entry_1 = Entry(root)			#entry from the user
+entry_2 = Entry(root)
 
+
+label_1.grid(row=0,sticky=E)	#this sticks the labels EAST 				
+label_2.grid(row=1,sticky=E)
+entry_1.grid(row=0,column=1)
+entry_2.grid(row=1,column=1)
+
+c = Checkbutton(root, text="Keep me logged in")	#literally a checkbutton
+c.grid(columnspan=2)
+
+'''
 topframe= Frame(root)
 topframe.pack()
 bottomframe= Frame(root)
@@ -21,5 +33,6 @@ button1.pack(side= LEFT) #pack stacks blocks on top of each other by default
 button2.pack(side= LEFT)
 button3.pack(side= LEFT) #packs as far left as possible
 button4.pack(side= TOP)
+'''
 
 root.mainloop()		#window should be on screen continuously until we close it. Thus we use an infinite loop 
