@@ -1,6 +1,28 @@
 from Tkinter import *
 
+
+class IOTButtons:
+
+	def __init__(self, master):		#__init__ gets called automatically whenever you create an object
+									#self for most classes, master for gui. 
+									#Master means root or main window (same thing, different names just to differentiate btwn variables)
+		frame= Frame(master)		#we created a frame in the main window
+		frame.pack()
+
+		self.printButton = Button(frame, text="Print Message", command=self.printMessage)	#call a certain func when button is clicked
+		self.printButton.pack(side=LEFT)
+
+		self.quitButton = Button(frame, text="Quit", command=frame.quit)	#frame.quit is an inbuilt function to break the main loop, ie quit
+		self.quitButton.pack(side=LEFT)
+
+	def printMessage(self):			#whenever we create an object from class IOTButtons, it throws this object in there
+		print("Wow this actually worked")
+
 root= Tk() #blank window
+b = IOTButtons(root)	#object allows us to access stuff inside the class
+						#any time we want to use something from a class, we need to make an object
+
+
 '''
 label_1 = Label(root, text='Username')
 label_2 = Label(root, text='Password')
@@ -15,7 +37,7 @@ entry_2.grid(row=1,column=1)
 
 c = Checkbutton(root, text="Keep me logged in")	#literally a checkbutton
 c.grid(columnspan=2)
-'''
+
 
 
 def leftclick(event):			#event is something the user can do
@@ -42,6 +64,8 @@ frame.pack()
 #button1.pack(side= LEFT) #pack stacks blocks on top of each other by default
 
 #button2.pack(side= TOP)
+'''
+
 
 
 root.mainloop()		#window should be on screen continuously until we close it. Thus we use an infinite loop 
