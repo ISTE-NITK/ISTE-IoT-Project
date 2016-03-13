@@ -21,7 +21,6 @@ class IOTButtons:
 root= Tk() #blank window
 b = IOTButtons(root)	#object allows us to access stuff inside the class
 						#any time we want to use something from a class, we need to make an object
-root.mainloop
 
 
 '''
