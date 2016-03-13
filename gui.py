@@ -22,7 +22,8 @@ root= Tk() #blank window
 b = IOTButtons(root)	#object allows us to access stuff inside the class
 						#any time we want to use something from a class, we need to make an object
 
-
+						#no functions need to be called by the object as init automatically gets called as soon as we create an object from this class
+						#thus after creating a class, all functionality is built right in, and we dont need to call specific functions from objects
 '''
 label_1 = Label(root, text='Username')
 label_2 = Label(root, text='Password')
