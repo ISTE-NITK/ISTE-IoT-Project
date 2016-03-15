@@ -25,9 +25,7 @@ def doNothing():
 root = Tk() #blank window
 
 
-
-
-#*******************************************************************	MAIN 	MENU 	********************************************************************
+#**************************************************	MAIN 	MENU 	********************************************************************
 
 
 
@@ -51,7 +49,17 @@ editMenu.add_command(label="Redo", command=doNothing)
 
 
 
-#***************************************************	TOOLBAR 	************************************************************************************************
+#***************************************************	TOOLBAR 	*********************************************************************
+
+status= Label(root, text="Preparing to do nothing...", bd=1, relief=SUNKEN, anchor= W)
+# bd is border, and we want it to appear sunken in, as a status bar usually looks, text is anchored west (W) 
+status.pack(side=BOTTOM, fill=X)
+
+
+
+
+
+
 
 toolbar = Frame(root, bg="Blue")
 
@@ -63,6 +71,9 @@ printButt.pack(side=LEFT, padx=2, pady=2)
 
 toolbar.pack(side=TOP, fill=X)
 
+
+
+#**************************************************	    STATUS		**********************************************************************
 
 
 
