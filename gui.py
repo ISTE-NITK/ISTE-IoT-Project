@@ -18,7 +18,30 @@ class IOTButtons:
 	def printMessage(self):			#whenever we create an object from class IOTButtons, it throws this object in there
 		print("Wow this actually worked")
 
-root= Tk() #blank window
+
+def doNothing():
+	print("ok ok I won't...")
+
+root = Tk() #blank window
+
+menu = Menu(root)
+root.config(menu=menu) #first menu is the parameter, second is variable name
+						#configuring menu in root 
+
+subMenu = Menu(menu)	#now this is not going in root, but in menu itself
+menu.add_cascade(label="File", menu=subMenu)	#drop down is cascading in tkinter. Second parameter is sub menu, named subMenu
+#as of now drop down menu has nothing, just void. Let's add something 
+
+subMenu.add_command(label="New File", command=doNothing)
+subMenu.add_command(label="Open File", command=doNothing)					
+subMenu.add_separator()
+subMenu.add_command(label="Exit", command=root.quit)
+
+editMenu= Menu(menu)	#this is another item called "edit"
+menu.add_cascade(label="Edit", menu=editMenu)
+editMenu.add_command(label="Redo", command=doNothing)
+
+
 b = IOTButtons(root)	#object allows us to access stuff inside the class
 						#any time we want to use something from a class, we need to make an object
 
