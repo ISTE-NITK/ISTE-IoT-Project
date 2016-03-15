@@ -24,6 +24,13 @@ def doNothing():
 
 root = Tk() #blank window
 
+
+
+
+#*******************************************************************	MAIN 	MENU 	********************************************************************
+
+
+
 menu = Menu(root)
 root.config(menu=menu) #first menu is the parameter, second is variable name
 						#configuring menu in root 
@@ -40,6 +47,21 @@ subMenu.add_command(label="Exit", command=root.quit)
 editMenu= Menu(menu)	#this is another item called "edit"
 menu.add_cascade(label="Edit", menu=editMenu)
 editMenu.add_command(label="Redo", command=doNothing)
+
+
+
+
+#***************************************************	TOOLBAR 	************************************************************************************************
+
+
+
+
+
+
+
+
+
+
 
 
 b = IOTButtons(root)	#object allows us to access stuff inside the class
