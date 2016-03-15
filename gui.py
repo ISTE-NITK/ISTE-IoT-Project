@@ -53,10 +53,15 @@ editMenu.add_command(label="Redo", command=doNothing)
 
 #***************************************************	TOOLBAR 	************************************************************************************************
 
+toolbar = Frame(root, bg="Blue")
 
+#what do we put in the toolbar? 
+insertButt = Button(toolbar, text="Insert Image", command=doNothing)
+insertButt.pack(side=LEFT, padx=2, pady=2) #padding means extra space so everything isnt squished together
+printButt = Button(toolbar, text="Print", command= doNothing)
+printButt.pack(side=LEFT, padx=2, pady=2) 
 
-
-
+toolbar.pack(side=TOP, fill=X)
 
 
 
