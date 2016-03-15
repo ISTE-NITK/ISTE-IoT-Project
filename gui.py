@@ -24,6 +24,11 @@ def doNothing():
 
 root = Tk() #blank window
 
+
+#**************************************************	MAIN 	MENU 	********************************************************************
+
+
+
 menu = Menu(root)
 root.config(menu=menu) #first menu is the parameter, second is variable name
 						#configuring menu in root 
@@ -40,6 +45,39 @@ subMenu.add_command(label="Exit", command=root.quit)
 editMenu= Menu(menu)	#this is another item called "edit"
 menu.add_cascade(label="Edit", menu=editMenu)
 editMenu.add_command(label="Redo", command=doNothing)
+
+
+
+
+#***************************************************	TOOLBAR 	*********************************************************************
+
+status= Label(root, text="Preparing to do nothing...", bd=1, relief=SUNKEN, anchor= W)
+# bd is border, and we want it to appear sunken in, as a status bar usually looks, text is anchored west (W) 
+status.pack(side=BOTTOM, fill=X)
+
+
+
+
+
+
+
+toolbar = Frame(root, bg="Blue")
+
+#what do we put in the toolbar? 
+insertButt = Button(toolbar, text="Insert Image", command=doNothing)
+insertButt.pack(side=LEFT, padx=2, pady=2) #padding means extra space so everything isnt squished together
+printButt = Button(toolbar, text="Print", command= doNothing)
+printButt.pack(side=LEFT, padx=2, pady=2) 
+
+toolbar.pack(side=TOP, fill=X)
+
+
+
+#**************************************************	    STATUS		**********************************************************************
+
+
+
+
 
 
 b = IOTButtons(root)	#object allows us to access stuff inside the class
