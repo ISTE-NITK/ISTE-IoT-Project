@@ -15,7 +15,7 @@ def login():
     if request.method == 'POST':
     	return 'You are using POST'
     else:
-    	return 'You are probably using GET'
+    	return 'Probably GET'
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):

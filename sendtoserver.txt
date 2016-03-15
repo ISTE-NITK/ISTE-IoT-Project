@@ -1,0 +1,55 @@
+
+I was wondering if there was a was a way to take something from a text box in the HTML, feed it into flask, then parse that data with Python. I was thinking this might involve some JS but I could be wrong. Any ideas?
+
+python flask
+shareimprove this question
+asked Sep 5 '12 at 9:05
+
+ANS:
+Unless you want to do something more complicated, feeding data from a HTML form into Flask is pretty easy.
+
+This is a complete example of how doing it:
+
+If your HTML is:
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1>Enter some text</h1>
+    <h2>(it will be converted to uppercase)</h2>
+    <form action="." method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form>
+</body>
+</html>
+Then your flask application can be something like this:
+
+from flask import Flask
+from flask import request
+from flask import render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def my_form():
+    return render_template("my-form.html")
+
+@app.route('/', methods=['POST'])
+def my_form_post():
+
+    text = request.form['text']
+    processed_text = text.upper()
+    return processed_text
+
+if __name__ == '__main__':
+    app.run()
+That is:
+
+Create a view that accepts a POST request (my_form_post)
+access the form elements in the dictionary request.form
+This is the flask documentation about accessing request data.
+
+If you need more complicated forms that need validation then you can take a look at WTForms and how to integrate them with flask.
+
+Note: unless you have any other restrictions, you don't really need JavaScript at all to send your data (although you can use it).
