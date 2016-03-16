@@ -27,6 +27,10 @@ def login_post():
     else:
     	return 'Probably GET'
     '''
+@app.route('/apprec/<value>')                                           
+def apprec(value):
+    return render_template('app-rec.html',value=value)
+
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):
