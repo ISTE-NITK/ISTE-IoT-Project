@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')											#by default this can  handle only GET methods, we need to declare POST if we need (form submissions)
+@app.route('/')                                 #by default this can  handle only GET methods, we need to declare POST if we need (form submissions)
 def index():
 	return render_template('index.html')
 
@@ -10,18 +10,19 @@ def index():
 def about():
     return 'A Project by ISTE- NITK Chapter.'
 
-@app.route('/login/')											
+@app.route('/login/')
 def login():
 	return render_template('my-form.html')
 
 @app.route('/login/', methods=['POST'])
 def login_post():
 
-	text = request.form['text']
-	processed_text=text.upper()
-	return processed_text
+    text = request.form['apptext']      #this should match the name in the html template (which it does)
+    processed_text = text.upper()
+    return processed_text
 
-	'''
+
+    '''
     if request.method == 'POST':
     	return 'You are using POST'
     else:
@@ -30,8 +31,20 @@ def login_post():
 @app.route('/apprec/<value>')                                           
 def apprec(value):
     return render_template('app-rec.html',value=value)  # see split method
-    #value of format: Host$Value1$Value2$Value3
+    #value is of format: Host$Value1$Value2$Value3
     #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
+
+
+
+
+
+
+
+
+
+
+
+
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):
