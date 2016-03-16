@@ -29,8 +29,9 @@ def login_post():
     '''
 @app.route('/apprec/<value>')                                           
 def apprec(value):
-    return render_template('app-rec.html',value=value)
-
+    return render_template('app-rec.html',value=value)  # see split method
+    #value of format: Host$Value1$Value2$Value3
+    #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):
