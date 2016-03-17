@@ -84,7 +84,7 @@ label_2.grid(row=1,sticky=E)
 entry_1.grid(row=0,column=1)
 entry_2.grid(row=1,column=1)
 
-c = Checkbutton(root, text="Keep me logged in")	#literally a checkbutton
+c = Checkbutton(root, text="Keep me logged in")	#literally a checkbutton. This is an inbuilt function
 c.grid(columnspan=2)
 
 
