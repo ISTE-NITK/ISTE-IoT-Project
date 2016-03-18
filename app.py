@@ -30,11 +30,11 @@ def login_post():
     '''
 @app.route('/apprec/<value>')                                           
 def apprec(value):
-    return render_template('app-rec.html',value=value)  # see split method
+    #return render_template('app-rec.html',value=value)  # see split method
     #value is of format: Host$Value1$Value2$Value3
     #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
-
-
+    H1=value.split(str="$", num=string.count(value)) 
+    #this stores H1 as a list of host, val1, val2 and val3
 
 
 
