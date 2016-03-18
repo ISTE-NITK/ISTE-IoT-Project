@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, Response
+from flask import Flask, render_template, request, jsonify, Response, json
 
 app = Flask(__name__)
 
@@ -37,13 +37,13 @@ def apprec(value):
     #this stores H1 as a list of host, val1, val2 and val3
 
 
-@app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: return jsonify(results=list)
+@app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: import jsonify and return jsonify(results=list)
 def test_json():
     list = [
             {'a': 1, 'b': 2},
             {'a': 5, 'b': 10}
            ]
-       return Response(json.dumps(list),  mimetype='application/json') #Import Response and use json.dumps to return as simpler list
+    return Response(json.dumps(list),  mimetype='application/json') #Import Response and json and use json.dumps to return as simpler list
 
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
