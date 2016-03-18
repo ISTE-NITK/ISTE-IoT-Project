@@ -21,7 +21,6 @@ def login_post():
     processed_text = text.upper()
     return processed_text
 
-
     '''
     if request.method == 'POST':
     	return 'You are using POST'
@@ -44,6 +43,23 @@ def test_json():
             {'a': 5, 'b': 10}
            ]
     return Response(json.dumps(list),  mimetype='application/json') #Import Response and json and use json.dumps to return as simpler list
+
+#Considering another example for jsonifying some data: 
+    tasks = [
+    {
+        'id':1,
+        'task':'this is first task'
+    },
+    {
+        'id':2,
+        'task':'this is another task'
+    }
+]
+
+@app.route('/app-name/api/v0.1/tasks',methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks':tasks})  #will return the json
+
 
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
