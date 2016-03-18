@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, request, jsonify, Response, json
 
 app = Flask(__name__)
 
@@ -21,7 +21,6 @@ def login_post():
     processed_text = text.upper()
     return processed_text
 
-
     '''
     if request.method == 'POST':
     	return 'You are using POST'
@@ -30,19 +29,36 @@ def login_post():
     '''
 @app.route('/apprec/<value>')                                           
 def apprec(value):
-    return render_template('app-rec.html',value=value)  # see split method
+    #return render_template('app-rec.html',value=value)  # see split method
     #value is of format: Host$Value1$Value2$Value3
     #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
+    H1=value.split(str="$", num=string.count(value)) 
+    #this stores H1 as a list of host, val1, val2 and val3
 
 
+@app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: import jsonify and return jsonify(results=list)
+def test_json():
+    list = [
+            {'a': 1, 'b': 2},
+            {'a': 5, 'b': 10}
+           ]
+    return Response(json.dumps(list),  mimetype='application/json') #Import Response and json and use json.dumps to return as simpler list
 
+#Considering another example for jsonifying some data: 
+    tasks = [
+    {
+        'id':1,
+        'task':'this is first task'
+    },
+    {
+        'id':2,
+        'task':'this is another task'
+    }
+]
 
-
-
-
-
-
-
+@app.route('/app-name/api/v0.1/tasks',methods=['GET'])
+def get_tasks():
+    return jsonify({'tasks':tasks})  #will return the json
 
 
 
