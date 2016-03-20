@@ -48,23 +48,6 @@ def test_json():
 #Considering another example for jsonifying some data: 
   
 
-@app.route('/app-name/api/v0.1/tasks',methods=['GET'])
-def get_tasks():  
-
-    tasks = [
-    {
-        'id':1,
-        'task':'this is first task'
-    },
-    {
-        'id':2,
-        'task':'this is another task'
-    }
-]
-    return jsonify({'tasks':tasks})  #will return the json
-
-
-
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
 def hello(name):
 	return render_template('page.html', name=name) 		#the first name is a keyword, second is the variable in page.html	THIS IMPLEMENTS GET
