@@ -9,14 +9,14 @@ def moveNode1():
 	return()
 
 def moveNode2():
-	e2_x = int(i1_2.get())
-	e2_y = int(i1_2.get())
+	e2_x = int(i2_1.get())
+	e2_y = int(i2_2.get())
 	node2=Button(root, text= 'Host Two').grid(row=e2_x, column=e2_y, padx = 2, pady = 2)
 	return
 
 def moveNode3():
-	e3_x = int(i1_2.get())
-	e3_y = int(i1_2.get())
+	e3_x = int(i3_1.get())
+	e3_y = int(i3_2.get())
 	node3=Button(root, text= 'Host Three').grid(row=e3_x, column=e3_y, padx = 2, pady = 2)		#make one function. needless waste of space and adds complexity
 	return
 

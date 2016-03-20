@@ -32,7 +32,8 @@ def apprec(value):
     #return render_template('app-rec.html',value=value)  # see split method
     #value is of format: Host$Value1$Value2$Value3
     #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
-    H1=value.split(str="$", num=string.count(value)) 
+    H1 = value.split(str="$") 
+    return Response(json.dumps(H1),  mimetype='application/json')
     #this stores H1 as a list of host, val1, val2 and val3
 
 
@@ -45,6 +46,11 @@ def test_json():
     return Response(json.dumps(list),  mimetype='application/json') #Import Response and json and use json.dumps to return as simpler list
 
 #Considering another example for jsonifying some data: 
+  
+
+@app.route('/app-name/api/v0.1/tasks',methods=['GET'])
+def get_tasks():  
+
     tasks = [
     {
         'id':1,
@@ -55,9 +61,6 @@ def test_json():
         'task':'this is another task'
     }
 ]
-
-@app.route('/app-name/api/v0.1/tasks',methods=['GET'])
-def get_tasks():
     return jsonify({'tasks':tasks})  #will return the json
 
 
