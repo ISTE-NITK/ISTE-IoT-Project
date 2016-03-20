@@ -55,3 +55,5 @@ button_3 = Button(root, text = "Submit",command = moveNode3).grid(row = 2, colum
 
 #***************************************
 root.mainloop()
+
+#Look into this http://pyqtgraph.org/ for possible graphing? 
