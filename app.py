@@ -27,6 +27,7 @@ def login_post():
     else:
     	return 'Probably GET'
     '''
+
 @app.route('/apprec/<value>')                                           
 def apprec(value):
     #return render_template('app-rec.html',value=value)  # see split method
@@ -36,6 +37,20 @@ def apprec(value):
     return Response(json.dumps(H1),  mimetype='application/json')
     #this stores H1 as a list of host, val1, val2 and val3
 
+    
+
+
+#******************IMPORTANT**************
+#This is a new route. If this webpage notices HTTP post, it will just echo what was sent through this protocol (from app)
+#HttpPost httpPost = new HttpPost("url");
+#This should work. Basically you create a http post object and send it to that url. if you keep 
+#refreshing the call to the HTTPpost then it ought to work dynamically
+
+@app.route("/data", method=("POST",))
+def handle_data():
+    return "You sent me " + str(request.values)     #This will get the data from the app as soon as it sees app has sent HTTP post request
+
+#try and receive the data in a round robin data structure (constant time for all hosts), serialize, and send to the triangulation part
 
 @app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: import jsonify and return jsonify(results=list)
 def test_json():
