@@ -37,6 +37,8 @@ def apprec(value):
     return Response(json.dumps(H1),  mimetype='application/json')
     #this stores H1 as a list of host, val1, val2 and val3
 
+    
+
 
 #******************IMPORTANT**************
 #This is a new route. If this webpage notices HTTP post, it will just echo what was sent through this protocol (from app)
@@ -48,7 +50,7 @@ def apprec(value):
 def handle_data():
     return "You sent me " + str(request.values)     #This will get the data from the app as soon as it sees app has sent HTTP post request
 
-
+#try and receive the data in a round robin data structure (constant time for all hosts), serialize, and send to the triangulation part
 
 @app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: import jsonify and return jsonify(results=list)
 def test_json():
