@@ -63,9 +63,11 @@ def handle_data():
     print "You sent me " + str1         #This will get the data from the app as soon as it sees app has sent HTTP post request    
     return Response(json.dumps(str1),  mimetype='application/json')    #jsonify the data for nice parsing
 
+#***************JSON is also a very secure means of transferring data. Look more into why JSON is important for implementation
+
 #try and receive the data in a round robin data structure (constant time for all hosts), serialize, and send to the triangulation part
-
-
+#Note this is good for advancing the scope of this project. However data will be received from the hosts in packets with above format 
+#and thus we dont need any data structures. We will receive the packets as they come, and send the jsonifyed data to the trilateration algorithm
 
 
 
