@@ -2,6 +2,10 @@ from flask import Flask, render_template, request, jsonify, Response, json
 
 app = Flask(__name__)
 
+
+
+
+
 @app.route('/')                                 #by default this can  handle only GET methods, we need to declare POST if we need (form submissions)
 def index():
 	return render_template('index.html')
@@ -28,16 +32,19 @@ def login_post():
     	return 'Probably GET'
     '''
 
+
+
 @app.route('/apprec/<value>')                                           
 def apprec(value):
-    #return render_template('app-rec.html',value=value)  # see split method
+
     #value is of format: Host$Value1$Value2$Value3
     #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
     H1 = value.split("$") 
     return Response(json.dumps(H1),  mimetype='application/json')
     #this stores H1 as a list of host, val1, val2 and val3
 
-    
+
+
 
 
 #******************IMPORTANT**************
@@ -46,11 +53,24 @@ def apprec(value):
 #This should work. Basically you create a http post object and send it to that url. if you keep 
 #refreshing the call to the HTTPpost then it ought to work dynamically
 
-@app.route("/data", method=("POST",))
+#due to multiple hosts, we will need to serialize and use one HTTP post to push data into a Flask array 
+#also check out multipart in android studio/ app dev 
+
+
+@app.route("/data", method=["POST"])
 def handle_data():
-    return "You sent me " + str(request.values)     #This will get the data from the app as soon as it sees app has sent HTTP post request
+    str1 = str(request.values)          #http://stackoverflow.com/questions/21595558/how-to-send-and-receive-data-between-flask-framework-web-server-and-android-app
+    print "You sent me " + str1         #This will get the data from the app as soon as it sees app has sent HTTP post request    
+    return Response(json.dumps(str1),  mimetype='application/json')    #jsonify the data for nice parsing
+
+#***************JSON is also a very secure means of transferring data. Look more into why JSON is important for implementation
 
 #try and receive the data in a round robin data structure (constant time for all hosts), serialize, and send to the triangulation part
+#Note this is good for advancing the scope of this project. However data will be received from the hosts in packets with above format 
+#and thus we dont need any data structures. We will receive the packets as they come, and send the jsonifyed data to the trilateration algorithm
+
+
+
 
 @app.route('/json')  #jsonify can be used on a dictionary to give list as JSON objects: import jsonify and return jsonify(results=list)
 def test_json():
@@ -60,7 +80,6 @@ def test_json():
            ]
     return Response(json.dumps(list),  mimetype='application/json') #Import Response and json and use json.dumps to return as simpler list
 
-#Considering another example for jsonifying some data: 
   
 
 @app.route('/profile/<name>/')							#name is the variable we pass to this route 
