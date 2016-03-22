@@ -37,11 +37,13 @@ def login_post():
 @app.route('/apprec/<value>')                                           
 def apprec(value):
 
-    #value is of format: Host$Value1$Value2$Value3
-    #extract host no, store values as H1= {val1, val2, val3} and so on for all hosts, each host being a list (array)
-    H1 = value.split("$") 
-    return Response(json.dumps(H1),  mimetype='application/json')
-    #this stores H1 as a list of host, val1, val2 and val3
+    #value is of format: Host_Id$Value1$Value2$Value3
+    #extract host no, store values as host= {val1, val2, val3} and so on for all hosts, each host being a list (array)
+    host = value.split("$")
+    #find which IP address request came from  
+    print ("Received some value")   #if app posts something it will appear in terminal
+    return Response(json.dumps(host),  mimetype='application/json')
+    #this stores host variable as a list of host_id, val1, val2 and val3
 
 
 
@@ -57,7 +59,7 @@ def apprec(value):
 #also check out multipart in android studio/ app dev 
 
 
-@app.route("/data", method=["POST"])
+@app.route("/data", methods=["POST"])
 def handle_data():
     str1 = str(request.values)          #http://stackoverflow.com/questions/21595558/how-to-send-and-receive-data-between-flask-framework-web-server-and-android-app
     print "You sent me " + str1         #This will get the data from the app as soon as it sees app has sent HTTP post request    
