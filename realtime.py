@@ -5,11 +5,10 @@ import time
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
-plt.ion()	
 
 # some X and Y data		Read these from a file? 		
-x = np.arange(100)		#numpy.fromfile(file, dtype=float, count=-1, sep='')
-y = np.arange(100)
+x = np.arange(1000)		#numpy.fromfile(file, dtype=float, count=-1, sep='')   http://docs.scipy.org/doc/numpy/reference/generated/numpy.fromfile.html#numpy.fromfile
+y = np.random.randn(1000)
 
 li, = ax.plot(x, y)
 
@@ -18,9 +17,9 @@ fig.canvas.draw()
 plt.show(block=False)
 
 # loop to make data update dynamically 
-while True:
+while True:                                 
     try:
-        y[:-10] = y[10:]					# wtf is this?
+        y[:-10] = y[10:]				#we can continuously load from the file in this loop and pass as parameters to set_ydata and set_xdata
         y[-10:] = np.random.randn(10)
 
         #x[:-10] = x[10:]
@@ -32,6 +31,6 @@ while True:
 
         fig.canvas.draw()
 
-        time.sleep(0.1)
+        time.sleep(0.01)
     except KeyboardInterrupt: 
 	break 
